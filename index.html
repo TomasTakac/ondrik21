@@ -76,9 +76,37 @@
     background:var(--ink);
     aspect-ratio:1120/1500;
     animation:pop .7s cubic-bezier(.2,1.4,.4,1) both;
-    cursor:zoom-in;
+    cursor:zoom-in;padding:0;
     -webkit-tap-highlight-color:transparent;
   }
+  .zoom{
+    position:fixed;inset:0;z-index:1000;
+    overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    background:rgba(13,6,20,.96);
+    cursor:zoom-out;
+    -webkit-tap-highlight-color:transparent;
+    animation:fadeIn .2s ease both;
+  }
+  .zoom-hint{
+    position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));z-index:1001;
+    transform:translateX(-50%) rotate(-2deg);
+    font-family:Bangers,cursive;font-size:18px;letter-spacing:.06em;white-space:nowrap;
+    background:var(--gold);color:var(--ink);border:3px solid var(--ink);
+    padding:7px 14px 5px;box-shadow:3px 3px 0 var(--ink);pointer-events:none;
+  }
+  .zoom[hidden]{display:none}
+  .zoom img{
+    display:block;max-width:none;height:auto;margin:0 auto;
+    border:4px solid var(--ink);box-shadow:0 0 0 3px var(--paper);
+    animation:zoomIn .3s cubic-bezier(.2,1.3,.4,1) both;
+  }
+  .zoom.closing{animation:fadeOut .18s ease both}
+  .zoom.closing img{animation:zoomOut .18s ease both}
+  @keyframes fadeIn{from{opacity:0}}
+  @keyframes fadeOut{to{opacity:0}}
+  @keyframes zoomIn{from{transform:scale(.45);opacity:.4}}
+  @keyframes zoomOut{to{transform:scale(.7)}}
+  html.zoomed{overflow:hidden}
   .poster img{width:100%;height:100%;object-fit:cover}
   @keyframes pop{from{transform:scale(.85) rotate(-3deg);opacity:0}to{transform:none;opacity:1}}
 
@@ -298,9 +326,9 @@
     <span class="stars" aria-label="wanted level 5"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span>
   </div>
 
-  <a class="poster" href="img/plagat.jpg" target="_blank" rel="noopener" aria-label="Plagát baby boy Ondrik 21 v plnej veľkosti">
+  <button class="poster" id="poster" type="button" aria-label="Priblížiť plagát">
     <img src="img/plagat.jpg" alt="Komiksový plagát: baby boy Ondrik 21" width="1120" height="1500" fetchpriority="high">
-  </a>
+  </button>
 
   <p class="tagline">LEVEL 21 ODOMKNUTÝ!
     <small>Všetko najlepšie, brácho. Máš 4 nové správy.</small>
@@ -349,6 +377,11 @@
   <p class="fine">Žiadni Ondrikovia neboli zranení pri výrobe tejto stránky. Asi.</p>
 </footer>
 
+<div class="zoom" id="zoom" role="button" aria-label="Zavrieť plagát" hidden>
+  <img src="img/plagat.jpg" alt="Komiksový plagát: baby boy Ondrik 21">
+  <span class="zoom-hint">ŤUKNI = SPÄŤ</span>
+</div>
+
 <dialog id="modal" aria-labelledby="mFrom">
   <button class="close" id="mClose" aria-label="Zavrieť">✕</button>
   <div class="sheet" id="sheet">
@@ -387,11 +420,7 @@ Si brutálny kamoš a som rád, že ťa mám.`,
   {
     name: "Samo",
     img: "img/samo.jpg",
-    text: `Brácho, šťastné a veselé! 🏖️
-
-Prajem ti, aby si sa v živote zakopával len do piesku a nikdy nie do problémov. Nech je ten 21. rok plný výletov, mora a hlúpostí, na ktoré budeme spomínať do smrti.
-
-Level 21 – hraj ho naplno.`,
+    text: `Čau ondro, ja ti prajem dva krát viac šťastia aj lásky aj peňazí aj zdravia jak ti praje Michna, dufam že keď budeš milionár si na mňa spomenieš.`,
     sig: "— Samo"
   },
   {
@@ -415,6 +444,35 @@ Na zdravie, legenda!`,
     sig: "— Michna"
   }
 ];
+
+/* ---------- plagát: ťuk = priblížiť, ťuk = späť ---------- */
+const zoom = document.getElementById('zoom');
+const posterBtn = document.getElementById('poster');
+const zoomImg = zoom.querySelector('img');
+posterBtn.addEventListener('click', e => {
+  const r = posterBtn.getBoundingClientRect();
+  // kam ťukol (0–1), aby sme priblížili práve to miesto
+  const fx = e.clientX ? (e.clientX - r.left) / r.width : .5;
+  const fy = e.clientY ? (e.clientY - r.top) / r.height : .5;
+  const w = Math.round(Math.max(r.width * 2.2, innerWidth));
+  zoomImg.style.width = w + 'px';
+  zoom.classList.remove('closing');
+  zoom.hidden = false;
+  document.documentElement.classList.add('zoomed');
+  const h = w * 1500 / 1120;
+  zoomImg.style.transformOrigin = `${fx * 100}% ${fy * 100}%`;
+  zoom.scrollLeft = fx * w - innerWidth / 2;
+  zoom.scrollTop = fy * h - innerHeight / 2;
+});
+zoom.addEventListener('click', () => {
+  zoom.classList.add('closing');
+  setTimeout(() => {
+    zoom.hidden = true;
+    zoom.classList.remove('closing');
+    document.documentElement.classList.remove('zoomed');
+  }, 170);
+});
+addEventListener('keydown', e => { if (e.key === 'Escape' && !zoom.hidden) zoom.click(); });
 
 /* ---------- karty ---------- */
 const cardsEl = document.getElementById('cards');
