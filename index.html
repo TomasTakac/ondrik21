@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Baby Boy Ondrik 21</title>
+<meta name="description" content="Všetko najlepšie, Ondrik! Level 21 odomknutý.">
+<meta name="theme-color" content="#1a0730">
+<meta property="og:title" content="BABY BOY ONDRIK – LEVEL 21">
+<meta property="og:description" content="Máš 4 nové správy. Otvor ich.">
+<meta property="og:image" content="img/plagat.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Titan+One&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d0614;
+    --night:#1a0730;
+    --plum:#3b0f5c;
+    --purple:#7b2ff7;
+    --magenta:#d43bc9;
+    --pink:#ff4f9a;
+    --coral:#ff7a59;
+    --orange:#ffa62b;
+    --gold:#ffd23f;
+    --cyan:#2ee6d6;
+    --paper:#fff8f0;
+    --stroke:#2a0a45;
+    --vice: linear-gradient(180deg,#4a3cf0 0%,#a23be0 28%,#ff4f9a 58%,#ff8a3d 82%,#ffb22b 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:Inter,system-ui,sans-serif;
+    color:var(--paper);
+    background:var(--night);
+    background-image:
+      radial-gradient(rgba(255,255,255,.07) 1.2px, transparent 1.3px),
+      linear-gradient(180deg,#c43fb8 0%,#5b1680 18%,#1a0730 45%,#1a0730 75%,#3b0f5c 100%);
+    background-size:14px 14px, 100% 100%;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  .wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+  html:has(dialog[open]){overflow:hidden}
+
+  /* ---------- HERO ---------- */
+  .hero{padding-top:max(14px,env(safe-area-inset-top));padding-bottom:10px;position:relative}
+  .topbar{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:Bangers,cursive;letter-spacing:.06em;font-size:clamp(15px,4vw,20px);
+    margin-bottom:12px;
+  }
+  .stars{color:var(--gold);text-shadow:2px 2px 0 var(--ink);letter-spacing:.12em}
+  .stars span{display:inline-block;animation:blink 1.2s infinite}
+  .stars span:nth-child(2){animation-delay:.15s}
+  .stars span:nth-child(3){animation-delay:.3s}
+  .stars span:nth-child(4){animation-delay:.45s}
+  .stars span:nth-child(5){animation-delay:.6s}
+  @keyframes blink{0%,60%{opacity:1}80%{opacity:.25}}
+
+  .panel{
+    background:var(--ink);
+    border:5px solid var(--ink);
+    box-shadow:0 0 0 3px var(--paper), 8px 8px 0 3px var(--ink);
+    overflow:hidden;
+    position:relative;
+  }
+  .panel > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .poster{
+    display:block;width:100%;max-width:520px;margin:0 auto;
+    border:4px solid var(--ink);
+    box-shadow:0 0 0 3px var(--paper), 8px 8px 0 3px var(--ink);
+    background:var(--ink);
+    aspect-ratio:1120/1500;
+    animation:pop .7s cubic-bezier(.2,1.4,.4,1) both;
+    cursor:zoom-in;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .poster img{width:100%;height:100%;object-fit:cover}
+  @keyframes pop{from{transform:scale(.85) rotate(-3deg);opacity:0}to{transform:none;opacity:1}}
+
+  /* spoločná fotka */
+  .crew{max-width:520px;margin:0 auto;transform:rotate(-1.5deg)}
+  .crew .panel{aspect-ratio:3/4;box-shadow:0 0 0 3px var(--paper), 8px 8px 0 3px var(--pink)}
+  .crew .panel img{filter:saturate(1.12) contrast(1.04)}
+  .crew .cap{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;
+    padding:40px 14px 14px;text-align:center;
+    background:linear-gradient(180deg,transparent,rgba(13,6,20,.9));
+    font-family:Bangers,cursive;font-size:clamp(22px,6.5vw,32px);letter-spacing:.05em;
+  }
+
+  .tagline{
+    text-align:center;
+    margin:22px auto 0;
+    font-family:Bangers,cursive;
+    font-size:clamp(22px,6vw,34px);
+    letter-spacing:.05em;
+    color:var(--gold);
+    text-shadow:3px 3px 0 var(--ink);
+    position:relative;z-index:3;
+  }
+  .tagline small{display:block;font-family:Inter,sans-serif;font-weight:700;font-size:14px;letter-spacing:.02em;color:var(--paper);text-shadow:none;opacity:.85;margin-top:4px}
+
+  .scroll-hint{
+    display:block;margin:18px auto 0;width:max-content;
+    font-family:Bangers,cursive;font-size:20px;letter-spacing:.08em;
+    color:var(--ink);background:var(--gold);
+    padding:10px 18px 8px;border:3px solid var(--ink);
+    box-shadow:4px 4px 0 var(--ink);
+    text-decoration:none;transform:rotate(-2deg);
+    animation:bob 1.6s ease-in-out infinite;
+  }
+  @keyframes bob{50%{transform:rotate(-2deg) translateY(5px)}}
+
+  /* ---------- SECTION HEADS ---------- */
+  section{padding:46px 0 10px}
+  .h2{
+    font-family:Bangers,cursive;
+    font-size:clamp(38px,10vw,64px);
+    letter-spacing:.04em;line-height:1;
+    text-align:center;
+    color:#fff;
+    -webkit-text-stroke:2px var(--ink);
+    paint-order:stroke fill;
+    text-shadow:4px 4px 0 var(--magenta),7px 7px 0 var(--ink);
+    margin-bottom:6px;
+  }
+  .sub{text-align:center;font-weight:700;opacity:.85;margin-bottom:26px;font-size:15px}
+
+  /* ---------- CHARACTER CARDS ---------- */
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px 16px;
+  }
+  @media (min-width:820px){.cards{grid-template-columns:repeat(4,1fr);gap:28px}}
+  .card{
+    --c:var(--pink);
+    appearance:none;border:0;background:none;cursor:pointer;
+    text-align:left;color:inherit;font:inherit;
+    position:relative;
+    transition:transform .18s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .card:nth-child(odd){transform:rotate(-2deg)}
+  .card:nth-child(even){transform:rotate(2deg)}
+  @media (hover:hover){.card:hover{transform:rotate(0) scale(1.04)}}
+  .card:focus-visible{transform:rotate(0) scale(1.04)}
+  .card:active{transform:scale(.97)}
+  .card:focus-visible{outline:4px dashed var(--gold);outline-offset:6px}
+  .card .panel{aspect-ratio:3/4;box-shadow:0 0 0 3px var(--paper), 7px 7px 0 3px var(--c)}
+  .card img{filter:saturate(1.1)}
+  .card .panel::before{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:
+      radial-gradient(rgba(0,0,0,.28) 1px,transparent 1.4px) 0 0/6px 6px,
+      linear-gradient(180deg,transparent 50%,rgba(13,6,20,.9));
+    mix-blend-mode:normal;
+  }
+  .card .name{
+    position:absolute;left:-6px;right:-6px;bottom:14px;z-index:2;
+    font-family:"Titan One",cursive;
+    font-size:clamp(30px,9vw,44px);
+    text-align:center;text-transform:uppercase;
+    color:#fff;-webkit-text-stroke:4px var(--ink);paint-order:stroke fill;
+    text-shadow:3px 4px 0 var(--c);
+    line-height:1;
+  }
+  .card .tap{
+    position:absolute;top:-12px;right:-8px;z-index:3;
+    font-family:Bangers,cursive;font-size:16px;letter-spacing:.06em;
+    background:var(--c);color:var(--ink);
+    border:3px solid var(--ink);padding:5px 9px 3px;
+    transform:rotate(8deg);
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .card .lock{
+    position:absolute;top:10px;left:10px;z-index:3;
+    font-size:22px;filter:drop-shadow(2px 2px 0 var(--ink));
+  }
+  .card.opened .tap{background:var(--paper)}
+  .card[data-i="0"]{--c:var(--pink)}
+  .card[data-i="1"]{--c:var(--orange)}
+  .card[data-i="2"]{--c:var(--cyan)}
+  .card[data-i="3"]{--c:var(--gold)}
+
+  .progress{
+    margin:30px auto 0;max-width:420px;text-align:center;
+    font-family:Bangers,cursive;letter-spacing:.06em;font-size:20px;
+  }
+  .bar{height:18px;border:3px solid var(--ink);background:rgba(255,255,255,.12);margin-top:8px;box-shadow:4px 4px 0 var(--ink)}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--orange),var(--gold));transition:width .6s cubic-bezier(.2,1.4,.4,1)}
+
+  /* ---------- COUNTDOWN ---------- */
+  .count{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+    max-width:640px;margin:0 auto;
+  }
+  .unit{
+    background:var(--paper);color:var(--ink);
+    border:4px solid var(--ink);
+    box-shadow:5px 5px 0 var(--magenta);
+    text-align:center;padding:12px 4px 8px;
+  }
+  .unit:nth-child(2){box-shadow:5px 5px 0 var(--orange)}
+  .unit:nth-child(3){box-shadow:5px 5px 0 var(--cyan)}
+  .unit:nth-child(4){box-shadow:5px 5px 0 var(--gold)}
+  .unit b{display:block;font-family:"Titan One",cursive;font-size:clamp(30px,9vw,56px);line-height:1;font-variant-numeric:tabular-nums}
+  .unit span{font-family:Bangers,cursive;font-size:clamp(14px,3.6vw,18px);letter-spacing:.06em}
+  .nextlvl{
+    text-align:center;margin-top:22px;font-weight:800;font-size:15px;opacity:.9
+  }
+  .nextlvl strong{color:var(--gold)}
+  .bday-today{display:none;text-align:center;font-family:"Titan One",cursive;font-size:clamp(34px,9vw,60px);color:var(--gold);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;text-shadow:5px 5px 0 var(--magenta)}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding-top:56px;padding-bottom:calc(40px + env(safe-area-inset-bottom));text-align:center}
+  .sign{
+    display:inline-block;
+    font-family:Bangers,cursive;font-size:clamp(22px,6vw,30px);letter-spacing:.05em;
+    background:var(--vice);color:var(--ink);
+    border:4px solid var(--ink);padding:12px 20px 9px;
+    box-shadow:6px 6px 0 var(--ink);transform:rotate(-1.5deg);
+  }
+  .fine{margin-top:18px;font-size:12px;opacity:.55}
+
+  /* ---------- MODAL ---------- */
+  dialog{
+    border:0;padding:0;background:transparent;color:inherit;
+    max-width:min(560px,calc(100vw - 24px));width:100%;
+    max-height:calc(100dvh - 24px);
+    margin:auto;overflow:visible;
+  }
+  dialog::backdrop{background:rgba(13,6,20,.82);backdrop-filter:blur(4px)}
+  dialog[open]{animation:zoom .38s cubic-bezier(.2,1.5,.4,1)}
+  @keyframes zoom{from{transform:scale(.6) rotate(-4deg);opacity:0}}
+  .sheet{
+    background:var(--paper);color:var(--ink);
+    border:5px solid var(--ink);
+    box-shadow:0 0 0 3px var(--paper),10px 10px 0 3px var(--c,var(--pink));
+    max-height:calc(100dvh - 40px);
+    overflow:auto;
+    position:relative;
+  }
+  .sheet .photo{position:relative;border-bottom:5px solid var(--ink);background:var(--ink)}
+  .sheet .photo img{width:100%;max-height:46dvh;object-fit:cover}
+  .passed{
+    position:absolute;left:0;right:0;bottom:12px;text-align:center;
+    font-family:"Titan One",cursive;
+    font-size:clamp(26px,8vw,40px);
+    color:var(--gold);
+    -webkit-text-stroke:4px var(--ink);paint-order:stroke fill;
+    text-shadow:3px 4px 0 var(--ink);
+    line-height:1;
+  }
+  .passed small{display:block;font-family:Bangers,cursive;-webkit-text-stroke:3px var(--ink);font-size:.55em;letter-spacing:.08em;color:#fff;margin-top:4px}
+  .body{padding:22px 20px 26px}
+  .from{
+    font-family:Bangers,cursive;font-size:18px;letter-spacing:.08em;
+    display:inline-block;background:var(--c,var(--pink));border:3px solid var(--ink);
+    padding:4px 10px 2px;transform:rotate(-2deg);margin-bottom:14px;
+  }
+  .wish{font-size:17px;line-height:1.6;font-weight:500;white-space:pre-line}
+  .sig{margin-top:16px;font-family:Bangers,cursive;font-size:24px;letter-spacing:.04em;text-align:right}
+  .close{
+    position:absolute;top:-16px;right:-12px;z-index:5;
+    width:48px;height:48px;border-radius:50%;
+    border:4px solid var(--ink);background:var(--gold);color:var(--ink);
+    font-family:"Titan One",cursive;font-size:22px;cursor:pointer;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .nav{display:flex;gap:10px;margin-top:22px}
+  .nav button{
+    flex:1;font-family:Bangers,cursive;font-size:20px;letter-spacing:.05em;
+    border:3px solid var(--ink);background:var(--ink);color:var(--paper);
+    padding:10px 8px 7px;cursor:pointer;box-shadow:3px 3px 0 var(--c,var(--pink));
+  }
+
+  #confetti{position:fixed;inset:0;pointer-events:none;z-index:9999}
+
+  @media (min-width:820px){
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+
+<header class="hero wrap">
+  <div class="topbar">
+    <span>ONDRIK CITY · 25.10.</span>
+    <span class="stars" aria-label="wanted level 5"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span>
+  </div>
+
+  <a class="poster" href="img/plagat.jpg" target="_blank" rel="noopener" aria-label="Plagát baby boy Ondrik 21 v plnej veľkosti">
+    <img src="img/plagat.jpg" alt="Komiksový plagát: baby boy Ondrik 21" width="1120" height="1500" fetchpriority="high">
+  </a>
+
+  <p class="tagline">LEVEL 21 ODOMKNUTÝ!
+    <small>Všetko najlepšie, brácho. Máš 4 nové správy.</small>
+  </p>
+  <a class="scroll-hint" href="#priania">▼ OTVOR SPRÁVY ▼</a>
+</header>
+
+<main class="wrap">
+  <section id="priania">
+    <h2 class="h2">VYBER SI POSTAVU</h2>
+    <p class="sub">Ťukni na kartičku a odomkni prianie 🎁</p>
+    <div class="cards" id="cards"></div>
+    <div class="progress">
+      <span id="progText">ODOMKNUTÉ: 0 / 4</span>
+      <div class="bar"><i id="progBar"></i></div>
+    </div>
+  </section>
+
+  <section id="partia">
+    <h2 class="h2">THE CREW</h2>
+    <p class="sub">Partia, ktorá ťa nikdy nenechá samého 🖤</p>
+    <figure class="crew">
+      <div class="panel">
+        <img src="img/spolocna.jpg" alt="Celá partia s Ondrikom a tortou" loading="lazy" width="1050" height="1400">
+        <figcaption class="cap">LEVEL 21 · OSLAVA 🎂</figcaption>
+      </div>
+    </figure>
+  </section>
+
+  <section id="odpocet">
+    <h2 class="h2">ĎALŠÍ LEVEL ZA</h2>
+    <p class="sub">Do 22. narodenín zostáva…</p>
+    <div class="count" id="count">
+      <div class="unit"><b id="d">000</b><span>DNÍ</span></div>
+      <div class="unit"><b id="h">00</b><span>HODÍN</span></div>
+      <div class="unit"><b id="m">00</b><span>MINÚT</span></div>
+      <div class="unit"><b id="s">00</b><span>SEKÚND</span></div>
+    </div>
+    <p class="bday-today" id="today">DNES JE TVOJ DEŇ! 🎉</p>
+    <p class="nextlvl" id="nextlvl">Ďalšia párty: <strong>25. 10.</strong> · priprav sa 🍾</p>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="sign">S LÁSKOU · TOMI, SAMO, KUBO &amp; MICHNA</div>
+  <p class="fine">Žiadni Ondrikovia neboli zranení pri výrobe tejto stránky. Asi.</p>
+</footer>
+
+<dialog id="modal" aria-labelledby="mFrom">
+  <button class="close" id="mClose" aria-label="Zavrieť">✕</button>
+  <div class="sheet" id="sheet">
+    <div class="photo">
+      <img id="mImg" alt="">
+      <div class="passed">PRIANIE ODOMKNUTÉ<small>RESPECT +1000</small></div>
+    </div>
+    <div class="body">
+      <div class="from" id="mFrom">OD: TOMI</div>
+      <p class="wish" id="mText"></p>
+      <p class="sig" id="mSig"></p>
+      <div class="nav">
+        <button id="mPrev">◀ PREDOŠLÉ</button>
+        <button id="mNext">ĎALŠIE ▶</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* =========================================================
+   PRIANIA – tu si upravte texty (pokojne aj s emoji).
+   Nový riadok v texte = nový odsek.
+   ========================================================= */
+const WISHES = [
+  {
+    name: "Tomi",
+    img: "img/tomi.jpg",
+    text: `Ondrik, všetko najlepšie k 21-ke! 🎂
+
+Zdravie, kopu peňazí, menej stresu a viac takýchto večerov pri jednom stole s partiou. Nech ti to v živote ide minimálne tak dobre ako nám pri tom jedle.
+
+Si brutálny kamoš a som rád, že ťa mám.`,
+    sig: "— Tomi"
+  },
+  {
+    name: "Samo",
+    img: "img/samo.jpg",
+    text: `Brácho, šťastné a veselé! 🏖️
+
+Prajem ti, aby si sa v živote zakopával len do piesku a nikdy nie do problémov. Nech je ten 21. rok plný výletov, mora a hlúpostí, na ktoré budeme spomínať do smrti.
+
+Level 21 – hraj ho naplno.`,
+    sig: "— Samo"
+  },
+  {
+    name: "Kubo",
+    img: "img/kubo.jpg",
+    text: `Ondrik, happy birthday! 🌊
+
+Celý rok si nás držal na pleciach (doslova 😂), tak teraz nech niekto drží teba. Prajem ti zdravie, lásku, úspech a nech si vždy na vrchole pyramídy.
+
+Ľúbime ťa, baby boy.`,
+    sig: "— Kubo"
+  },
+  {
+    name: "Michna",
+    img: "img/michna.jpg",
+    text: `Všetko najlepšie, Ondrik! 🐴
+
+Nech ťa život ťahá len tam, kam chceš ísť ty. Prajem ti veľa zdravia, šťastia, peňazí a hlavne kopu ďalších akcií s nami – lebo bez teba to proste nie je ono.
+
+Na zdravie, legenda!`,
+    sig: "— Michna"
+  }
+];
+
+/* ---------- karty ---------- */
+const cardsEl = document.getElementById('cards');
+const opened = new Set();
+WISHES.forEach((w, i) => {
+  const b = document.createElement('button');
+  b.className = 'card';
+  b.dataset.i = i;
+  b.setAttribute('aria-label', `Otvoriť prianie: ${w.name}`);
+  b.innerHTML = `
+    <span class="tap">ŤUKNI!</span>
+    <div class="panel">
+      <span class="lock">🔒</span>
+      <img src="${w.img}" alt="${w.name} s Ondrikom" loading="lazy">
+      <span class="name">${w.name}</span>
+    </div>`;
+  b.addEventListener('click', () => openWish(i));
+  cardsEl.appendChild(b);
+});
+
+/* ---------- modal ---------- */
+const modal = document.getElementById('modal');
+const sheet = document.getElementById('sheet');
+const COLORS = ['var(--pink)','var(--orange)','var(--cyan)','var(--gold)'];
+let current = 0;
+
+function openWish(i){
+  current = (i + WISHES.length) % WISHES.length;
+  const w = WISHES[current];
+  document.getElementById('mImg').src = w.img;
+  document.getElementById('mImg').alt = w.name + ' s Ondrikom';
+  document.getElementById('mFrom').textContent = 'OD: ' + w.name.toUpperCase();
+  document.getElementById('mText').textContent = w.text;
+  document.getElementById('mSig').textContent = w.sig;
+  modal.style.setProperty('--c', COLORS[current]);
+  sheet.style.setProperty('--c', COLORS[current]);
+  sheet.scrollTop = 0;
+  if (!modal.open) modal.showModal();
+  else { modal.style.animation='none'; modal.offsetHeight; modal.style.animation=''; }
+
+  const card = cardsEl.children[current];
+  card.classList.add('opened');
+  card.querySelector('.lock').textContent = '🔓';
+  card.querySelector('.tap').textContent = 'PREČÍTANÉ';
+  opened.add(current);
+  const n = opened.size;
+  document.getElementById('progText').textContent =
+    n === WISHES.length ? 'VŠETKO ODOMKNUTÉ! 💯' : `ODOMKNUTÉ: ${n} / ${WISHES.length}`;
+  document.getElementById('progBar').style.width = (n / WISHES.length * 100) + '%';
+  confetti(n === WISHES.length ? 260 : 140);
+}
+document.getElementById('mClose').onclick = () => modal.close();
+document.getElementById('mPrev').onclick = () => openWish(current - 1);
+document.getElementById('mNext').onclick = () => openWish(current + 1);
+modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
+
+/* ---------- odpočet do 25.10. ---------- */
+const BDAY_MONTH = 9, BDAY_DAY = 25; // október = 9 (JS počíta mesiace od 0)
+const BIRTH_YEAR = 2005;             // 21 v roku 2026
+const pad = (n, l=2) => String(n).padStart(l, '0');
+function tick(){
+  const now = new Date();
+  const isToday = now.getMonth() === BDAY_MONTH && now.getDate() === BDAY_DAY;
+  let target = new Date(now.getFullYear(), BDAY_MONTH, BDAY_DAY);
+  if (target <= now) target = new Date(now.getFullYear() + 1, BDAY_MONTH, BDAY_DAY);
+  const age = target.getFullYear() - BIRTH_YEAR;
+  document.querySelector('#odpocet .sub').textContent = `Do ${age}. narodenín zostáva…`;
+  document.getElementById('nextlvl').innerHTML =
+    `Level ${age} sa odomkne: <strong>25. 10. ${target.getFullYear()}</strong> · priprav sa 🍾`;
+  document.getElementById('today').style.display = isToday ? 'block' : 'none';
+  let diff = Math.max(0, target - now) / 1000;
+  const d = Math.floor(diff / 86400); diff -= d * 86400;
+  const h = Math.floor(diff / 3600);  diff -= h * 3600;
+  const m = Math.floor(diff / 60);
+  const s = Math.floor(diff - m * 60);
+  document.getElementById('d').textContent = d;
+  document.getElementById('h').textContent = pad(h);
+  document.getElementById('m').textContent = pad(m);
+  document.getElementById('s').textContent = pad(s);
+}
+tick(); setInterval(tick, 1000);
+
+/* ---------- konfety ---------- */
+const cv = document.getElementById('confetti');
+const cx = cv.getContext('2d');
+let parts = [], raf = null;
+function size(){ cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; }
+size(); addEventListener('resize', size);
+const PAL = ['#ff4f9a','#ffa62b','#ffd23f','#2ee6d6','#7b2ff7','#ffffff','#d43bc9'];
+function confetti(n=140){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const W = cv.width, H = cv.height, dpr = devicePixelRatio;
+  for (let i=0;i<n;i++){
+    const fromLeft = i % 2 === 0;
+    parts.push({
+      x: fromLeft ? 0 : W, y: H * .65,
+      vx: (fromLeft ? 1 : -1) * (6 + Math.random()*10) * dpr,
+      vy: -(10 + Math.random()*14) * dpr,
+      w: (6 + Math.random()*8) * dpr, h: (4 + Math.random()*6) * dpr,
+      r: Math.random()*6.28, vr: (Math.random()-.5)*.4,
+      c: PAL[(Math.random()*PAL.length)|0],
+      star: Math.random() < .18, life: 0
+    });
+  }
+  if (!raf) raf = requestAnimationFrame(step);
+}
+function star(x,y,r){
+  cx.beginPath();
+  for(let i=0;i<10;i++){const a=i*Math.PI/5-Math.PI/2, rr=i%2?r*.45:r; cx.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr);}
+  cx.closePath(); cx.fill();
+}
+function step(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  const g = .45 * devicePixelRatio;
+  parts = parts.filter(p => p.y < cv.height + 40 && p.life < 400);
+  for (const p of parts){
+    p.vy += g; p.vx *= .985; p.vy *= .985;
+    p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life++;
+    cx.save(); cx.translate(p.x,p.y); cx.rotate(p.r); cx.fillStyle = p.c;
+    if (p.star) star(0,0,p.w*.9); else cx.fillRect(-p.w/2,-p.h/2,p.w,p.h * Math.abs(Math.cos(p.life*.1)) + 1);
+    cx.restore();
+  }
+  raf = parts.length ? requestAnimationFrame(step) : null;
+  if (!raf) cx.clearRect(0,0,cv.width,cv.height);
+}
+addEventListener('load', () => setTimeout(() => confetti(180), 500));
+</script>
+</body>
+</html>
