@@ -310,6 +310,29 @@
 
   #confetti{position:fixed;inset:0;pointer-events:none;z-index:9999}
 
+  /* celá fotka */
+  .full-btn{
+    position:absolute;top:10px;left:10px;z-index:3;
+    font-family:Bangers,cursive;font-size:15px;letter-spacing:.06em;
+    background:var(--paper);color:var(--ink);
+    border:3px solid var(--ink);padding:4px 8px 2px;
+    box-shadow:2px 2px 0 var(--ink);pointer-events:none;
+  }
+  .sheet .photo, .crew .panel{cursor:zoom-in;-webkit-tap-highlight-color:transparent}
+  dialog.lightbox{
+    max-width:100vw;max-height:100dvh;width:100vw;height:100dvh;
+    margin:0;padding:0;border:0;background:transparent;
+    cursor:zoom-out;overflow:hidden;
+  }
+  dialog.lightbox[open]{display:flex;align-items:center;justify-content:center;animation:fadeIn .2s ease both}
+  dialog.lightbox::backdrop{background:rgba(13,6,20,.94);backdrop-filter:none}
+  .lightbox img{
+    max-width:calc(100vw - 24px);max-height:calc(100dvh - 110px);
+    width:auto;height:auto;object-fit:contain;
+    border:4px solid var(--ink);box-shadow:0 0 0 3px var(--paper);
+    animation:zoomIn .3s cubic-bezier(.2,1.3,.4,1) both;
+  }
+
   @media (min-width:820px){
   }
   @media (prefers-reduced-motion:reduce){
@@ -351,7 +374,8 @@
     <h2 class="h2">THE CREW</h2>
     <p class="sub">Partia, ktorá ťa nikdy nenechá samého 🖤</p>
     <figure class="crew">
-      <div class="panel">
+      <div class="panel" id="crewPhoto" role="button" aria-label="Zobraziť celú fotku">
+        <span class="full-btn">🔍 CELÁ FOTKA</span>
         <img src="img/spolocna.jpg" alt="Celá partia s Ondrikom a tortou" loading="lazy" width="1050" height="1400">
         <figcaption class="cap">LEVEL 20 · OSLAVA 🎂</figcaption>
       </div>
@@ -382,10 +406,16 @@
   <span class="zoom-hint">ŤUKNI = SPÄŤ</span>
 </div>
 
+<dialog class="lightbox" id="lightbox" aria-label="Celá fotka">
+  <img id="lbImg" alt="">
+  <span class="zoom-hint">ŤUKNI = SPÄŤ</span>
+</dialog>
+
 <dialog id="modal" aria-labelledby="mFrom">
   <button class="close" id="mClose" aria-label="Zavrieť">✕</button>
   <div class="sheet" id="sheet">
-    <div class="photo">
+    <div class="photo" id="mPhoto" role="button" aria-label="Zobraziť celú fotku">
+      <span class="full-btn">🔍 CELÁ FOTKA</span>
       <img id="mImg" alt="">
       <div class="passed">PRIANIE ODOMKNUTÉ<small>RESPECT +1000</small></div>
     </div>
@@ -488,6 +518,19 @@ WISHES.forEach((w, i) => {
   b.addEventListener('click', () => openWish(i));
   cardsEl.appendChild(b);
 });
+
+/* ---------- celá fotka (ťuk = zobraz, ťuk = späť) ---------- */
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+function showFull(src, alt){
+  lbImg.src = src; lbImg.alt = alt || '';
+  lightbox.showModal();
+}
+lightbox.addEventListener('click', () => lightbox.close());
+document.getElementById('mPhoto').addEventListener('click', () => {
+  const i = document.getElementById('mImg'); showFull(i.src, i.alt);
+});
+document.getElementById('crewPhoto').addEventListener('click', () => showFull('img/spolocna.jpg', 'Celá partia s Ondrikom a tortou'));
 
 /* ---------- modal ---------- */
 const modal = document.getElementById('modal');
