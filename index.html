@@ -325,18 +325,7 @@
   @keyframes beat{50%{transform:scale(1.08)}}
   .music-ico{font-size:24px;line-height:1;pointer-events:none}
   .music{appearance:none;padding:0;font:inherit}
-  /* skrytý prehrávač; ukáže sa len ak telefón nedovolí spustiť hudbu ikonou */
-  .yt-wrap{position:fixed;right:0;bottom:0;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;z-index:-1}
-  .yt-wrap iframe{width:300px;height:169px;border:0;display:block}
-  .yt-wrap.ask{
-    z-index:60;opacity:1;pointer-events:auto;overflow:visible;
-    width:auto;height:auto;right:max(14px,env(safe-area-inset-right));bottom:calc(max(14px,env(safe-area-inset-bottom)) + 66px);
-    background:var(--paper);color:var(--ink);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:10px;
-  }
-  .yt-wrap .ask-txt{display:none;font-family:"Pricedown Bl",Bangers,cursive;font-size:18px;letter-spacing:.05em;margin-bottom:8px;padding-right:34px}
-  .yt-wrap.ask .ask-txt{display:block}
-  .yt-wrap .ask-x{display:none;position:absolute;top:6px;right:6px;width:30px;height:30px;border-radius:50%;border:3px solid var(--ink);background:var(--gold);font-weight:900;cursor:pointer;line-height:1}
-  .yt-wrap.ask .ask-x{display:block}
+
   .soundtrack{margin-top:14px;font-size:13px;font-weight:700;opacity:.7}
 
   /* celá fotka */
@@ -423,10 +412,7 @@
 <body>
 <canvas id="confetti"></canvas>
 <button class="music" id="music" type="button" aria-label="Zapnúť hudbu"><span class="music-ico" id="musicIco">🔇</span></button>
-<div class="yt-wrap" id="ytWrap">
-  <p class="ask-txt">Ťukni na ▶ a hudba sa spustí 🎵</p>
-  <button class="ask-x" id="askX" type="button" aria-label="Zavrieť">✕</button>
-  <div id="ytPlayer"></div>
+<audio id="bgm" src="hudba/soundtrack.m4a" preload="auto" loop playsinline></audio>
 </div>
 
 <header class="hero wrap">
@@ -588,40 +574,18 @@ zoom.addEventListener('click', () => {
 addEventListener('keydown', e => { if (e.key === 'Escape' && !zoom.hidden) zoom.click(); });
 
 /* ---------- hudba v pozadí: ikona 🔇 / 🔊 ---------- */
-const VIDEO_ID = 'rRR9ctu2ZTQ';
 const music = document.getElementById('music');
-let ytPlayer = null, playing = false;
+const bgm = document.getElementById('bgm');
 function setMusicUi(on){
-  playing = on;
   music.classList.toggle('on', on);
   document.getElementById('musicIco').textContent = on ? '🔊' : '🔇';
   music.setAttribute('aria-label', on ? 'Vypnúť hudbu' : 'Zapnúť hudbu');
 }
-window.onYouTubeIframeAPIReady = () => {
-  ytPlayer = new YT.Player('ytPlayer', {
-    host: 'https://www.youtube-nocookie.com',
-    videoId: VIDEO_ID,
-    width: 300, height: 169,
-    playerVars: { playsinline: 1, controls: 0, rel: 0, loop: 1, playlist: VIDEO_ID, disablekb: 1, fs: 0, iv_load_policy: 3 },
-    events: {
-      onStateChange: e => {
-        const on = e.data === YT.PlayerState.PLAYING || e.data === YT.PlayerState.BUFFERING;
-        if (e.data === YT.PlayerState.PLAYING) ytWrap.classList.remove('ask');
-        setMusicUi(on);
-      },
-      onError: () => { music.style.display = 'none'; }
-    }
-  });
-};
-(() => { const t = document.createElement('script'); t.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(t); })();
-const ytWrap = document.getElementById('ytWrap');
-document.getElementById('askX').addEventListener('click', () => ytWrap.classList.remove('ask'));
+bgm.addEventListener('play', () => setMusicUi(true));
+bgm.addEventListener('pause', () => setMusicUi(false));
 music.addEventListener('click', () => {
-  if (!ytPlayer || !ytPlayer.playVideo) return;
-  if (playing) { ytPlayer.pauseVideo(); setMusicUi(false); return; }
-  ytPlayer.playVideo();
-  // iPhone nedovolí spustiť zvuk cez ikonu – vtedy ukážeme malý prehrávač s ▶
-  setTimeout(() => { if (!playing) ytWrap.classList.add('ask'); }, 1200);
+  if (bgm.paused) bgm.play().catch(() => setMusicUi(false));
+  else bgm.pause();
 });
 
 /* ---------- karty ---------- */
